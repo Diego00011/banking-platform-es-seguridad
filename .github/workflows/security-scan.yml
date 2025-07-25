@@ -35,4 +35,3 @@ jobs:
         with:
           name: scan-reports
           path: |
-            *.json
