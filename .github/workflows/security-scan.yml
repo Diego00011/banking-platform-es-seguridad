@@ -40,6 +40,12 @@ jobs:
       - name: Run Snyk (SCA)
         run: snyk test --json > snyk-report.json || true
 
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov (IaC scanning)
+        run: checkov -d . -o json > checkov-report.json || true
+
       - name: Upload reports
         uses: actions/upload-artifact@v4
         with:
@@ -47,3 +53,4 @@ jobs:
           path: |
             gitleaks-report.json
             snyk-report.json
+            checkov-report.json
