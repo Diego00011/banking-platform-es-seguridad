@@ -25,6 +25,12 @@ jobs:
       - name: Run Gitleaks (Secret Scanning)
         run: gitleaks detect --source . --report-format json --report-path gitleaks-report.json
 
+      - name: Dar permisos a mvnw
+        run: chmod +x mvnw
+
+      - name: Probar mvnw manualmente
+        run: ./mvnw dependency:tree -DoutputType=dot --batch-mode --non-recursive
+
       - name: Install Snyk
         run: npm install -g snyk
 
