@@ -1,0 +1,13 @@
+services:
+  banking-platform-es:
+    image: banking-platform-es:1.0.2-docker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/banking-es?serverTimezone=UTC
+      - DATASOURCE_USERNAME=root
+      - DATASOURCE_PASSWORD=password
